@@ -2,11 +2,19 @@
 from os import getenv as env
 from typing import Literal
 
+from dotenv import load_dotenv
 import pandas as pd 
 from pandas import DataFrame, Series
 
-SOURCE_PATH = env("AWS_S3_SOURCE_PATH")
-OUTPUT_PATH = env("AWS_S3_WORK_PATH")
+from internal_libs.glue_helper import get_args
+
+load_dotenv()
+
+ARGS = get_args({
+    "AWS_S3_SOURCE_PATH": env("AWS_S3_SOURCE_PATH"),
+    "AWS_S3_WORK_PATH": env("AWS_S3_WORK_PATH")
+})
+
 
 #%% Computes functions 
 
@@ -296,9 +304,9 @@ def load_final_dataframe(df: DataFrame, output_path: str):
 if __name__ == "__main__":
     """Main execution of the job"""
     
-    df_raw_acm = compute_raw_bibtex(SOURCE_PATH, 'acm')
-    df_raw_ieee = compute_raw_bibtex(SOURCE_PATH, 'ieee')
-    df_raw_sd = compute_raw_bibtex(SOURCE_PATH, 'science_direct')
+    df_raw_acm = compute_raw_bibtex(ARGS['AWS_S3_SOURCE_PATH'], 'acm')
+    df_raw_ieee = compute_raw_bibtex(ARGS['AWS_S3_SOURCE_PATH'], 'ieee')
+    df_raw_sd = compute_raw_bibtex(ARGS['AWS_S3_SOURCE_PATH'], 'science_direct')
 
     df_acm = compute_acm_dataframe(df_raw_acm)
     df_ieee = compute_ieee_dataframe(df_raw_ieee)
@@ -306,12 +314,12 @@ if __name__ == "__main__":
 
     df_bibtex = compute_bibtex_dataframe(df_acm, df_ieee, df_sd)
     
-    df_jcs = compute_jcs_dataframe(SOURCE_PATH)
-    df_scimago = compute_scimago_dataframe(SOURCE_PATH)
+    df_jcs = compute_jcs_dataframe(ARGS['AWS_S3_SOURCE_PATH'])
+    df_scimago = compute_scimago_dataframe(ARGS['AWS_S3_SOURCE_PATH'])
     
     df_journal = compute_journal_dataframe(df_jcs, df_scimago)
     
     df = compute_final_dataframe(df_bibtex, df_journal)
     
-    load_final_dataframe(df, OUTPUT_PATH)
+    load_final_dataframe(df, ARGS['AWS_S3_WORK_PATH'])
 

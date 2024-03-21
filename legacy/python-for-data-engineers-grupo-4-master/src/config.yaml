@@ -1,0 +1,16 @@
+export_format: "json"
+filters:   
+  title: #"Big Data"            #Inserir uma REGEX
+  keywords: #["Data Quality", "Big Data"]         #Inserir um array de keywords  
+  abstract:         #Inserir uma REGEX
+  year:             #Inserir um array de numeros inteiros
+  type_publication:        #Inserir uma REGEX
+  doi:              #Inserir uma REGEX
+  jcs_value:       #Inserir um número inteiro
+  scimago_value:    #Inserir um número inteiro
+iee_api_config: 
+  query_terms: ["data quality"]
+  pages_quantity: 2
+science_direct_api_config: 
+  query_terms: ["big data"]
+  pages_quantity: 2

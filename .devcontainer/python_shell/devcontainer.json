@@ -1,0 +1,20 @@
+{
+    "name": "AWS Glue Python Shell Dev Container",
+    "image": "python:3.9",
+    "runArgs": ["--name", "AWS_GLUE_PYTHON_SHELL_DEV_CONTAINER_DEMONSTRACAO"],
+    "forwardPorts": [],
+    "remoteUser": "root",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python"
+            }
+        }
+    }
+}
+

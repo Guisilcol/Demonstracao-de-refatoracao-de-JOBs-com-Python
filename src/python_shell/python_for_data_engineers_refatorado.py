@@ -322,4 +322,3 @@ if __name__ == "__main__":
     df = compute_final_dataframe(df_bibtex, df_journal)
     
     load_final_dataframe(df, ARGS['AWS_S3_WORK_PATH'])
-

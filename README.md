@@ -316,7 +316,7 @@ Na pasta "legacy" deste repositório, você encontrará duas subpastas, cada uma
 
 Segue a explicação dos diretórios e arquivos do projeto "**python-for-data-engineers-grupo-4-master**":
 
-
+```bash
 `api_src` - Contém o código fonte da API REST construída com os dados disponibilizados pela pipeline (pasta `src`).
 ├── `api_resources` - Contém os recursos auxiliares usados na codificação de rotas da API.
 ├── `database.py` - Módulo responsável por mediar a comunicação entre a aplicação e o banco de dados
@@ -345,6 +345,7 @@ Segue a explicação dos diretórios e arquivos do projeto "**python-for-data-en
 ├── `output` - Pasta que armazena os arquivos de saída da pipeline
 └── `sandbox` - Pasta que armazena os arquivos de teste da pipeline
 `todo.md` - Arquivo que contém as tarefas a serem realizadas no projeto
+```
 
 # TODO 
 

@@ -352,21 +352,21 @@ Segue a explicação dos diretórios e arquivos do projeto "**python-for-data-en
 Segue a explicação dos diretórios e arquivos do projeto **spark-for-data-enginners-main**":
 
 ```bash
-consumer - Contém o código fonte do consumidor de mensagens do Kafka
-├── consumer.ipynb - Notebook Jupyter que contém o código fonte do consumidor de mensagens do Kafka
-└── data - Pasta que armazena os arquivos de saída do consumidor
-    └── db.sqlite - Arquivo do banco de dados SQLite3
-docker-compose.yml - Arquivo de configuração do Docker Compose
-migrations - Pasta que contém os arquivos de migração do banco de dados
+`consumer` - Contém o código fonte do consumidor de mensagens do Kafka
+├── `consumer.ipynb` - Notebook Jupyter que contém o código fonte do consumidor de mensagens do Kafka
+└── `data` - Pasta que armazena os arquivos de saída do consumidor
+    └── `db.sqlite` - Arquivo do banco de dados SQLite3
+`docker-compose.yml` - Arquivo de configuração do Docker Compose
+`migrations` - Pasta que contém os arquivos de migração do banco de dados
 └── migration_1.sql - Arquivo de migração que cria a tabela de dados
-on_docker_compose_up.md - Documento que contém as instruções para execução do projeto
-outras atividades - Pasta que contém os arquivos de outras atividades realizadas durante o curso
-├── Spark_For_Data_Enginners_Execicio_Aula_3.ipynb - Notebook Jupyter que contém o código fonte da atividade 3 (equivalente à pipeline do projeto **python-for-data-engineers-grupo-4-master**)
-└── Word_Count.ipynb - Notebook Jupyter que contém o código fonte da primeira atividade do curso
-producer - Contém o código fonte do produtor de mensagens do Kafka
-└── producer.py - Módulo Python que contém o código fonte do produtor de mensagens do Kafka
-pyproject.toml - Arquivo de configuração do Poetry
-README.md - Documentação do projeto
+`on_docker_compose_up.md` - Documento que contém as instruções para execução do projeto
+`outras atividades` - Pasta que contém os arquivos de outras atividades realizadas durante o curso
+├── `Spark_For_Data_Enginners_Execicio_Aula_3.ipynb` - Notebook Jupyter que contém o código fonte da atividade 3 (equivalente à pipeline do projeto **python-for-data-engineers-grupo-4-master**)
+└── `Word_Count.ipynb` - Notebook Jupyter que contém o código fonte da primeira atividade do curso
+`producer` - Contém o código fonte do produtor de mensagens do Kafka
+└── `producer.py` - Módulo Python que contém o código fonte do produtor de mensagens do Kafka
+`pyproject.toml` - Arquivo de configuração do Poetry
+`README.md` - Documentação do projeto
 ```
 
 

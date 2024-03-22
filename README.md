@@ -68,12 +68,11 @@ A implementação de um padrão de codificação para jobs de ETL é fundamental
 
 ## Origem da ideia
 
-
 Recentemente, o campo da engenharia de dados tem testemunhado a introdução de soluções inovadoras e robustas destinadas a resolver desafios comuns da área. Entre essas soluções, o Dagster destaca-se como uma ferramenta promissora de orquestração de pipelines, apresentando-se como uma alternativa ao Airflow. O grande destaque do Dagster reside na sua abordagem para a padronização de código através de uma funcionalidade conhecida como Assets.
 
 Os Assets do Dagster oferecem uma forma eficiente e organizada de gerenciar dados em um pipeline de ETL. Simplificando, um Asset no Dagster é qualquer item de dados criado ou utilizado durante um pipeline sendo representado por uma função Python. Isso pode ser desde arquivos de dados e registros em bancos de dados até tabelas, métricas e relatórios. Este conceito é fundamental no Dagster, pois facilita a construção, teste e monitoramento de pipelines de dados de maneira mais eficiente.
 
-A proposta de padronizar a codificação de jobs de ETL visa trazer a organização e a gestão de código, típicas do Dagster, para o desenvolvimento em Python puro. Isso significa criar funções que representem Assets, como tabelas, arquivos, métricas, relatórios etc., que geralmente retornam DataFrames, listas, dicionários ou outros tipos de dados correspondentes a um Asset.
+A proposta de padronizar a codificação de jobs de ETL visa trazer a organização e a gestão de código, típicas do Dagster, para o desenvolvimento em Python puro. Isso significa criar funções que representem Assets, como tabelas, arquivos, métricas, relatórios etc., que geralmente retornam DataFrames, listas, dicionários ou outros tipos de dados correspondentes a um Asset. A definição clara de Assets torna a lógica do ETL mais transparente e facilita os testes, transformando desafios complexos em problemas menores e isolados que podem ser avaliados individualmente. Essa abordagem não só permite a reutilização dessas funções em diferentes jobs de ETL, mas também simplifica a orquestração do job, tornando-a mais compreensível.
 
 ## Estrutura de um job de ETL padronizado
 
@@ -313,6 +312,39 @@ if __name__ == "__main__":
 
 Na pasta "legacy" deste repositório, você encontrará duas subpastas, cada uma representando um projeto distinto. Esses projetos servem como exemplos de códigos de ETL que não adotam as boas práticas de desenvolvimento abordadas neste guia. Originalmente, estes projetos visam à integração de dados, tratando especificamente de informações de artigos científicos com o objetivo de consolidá-los em uma única base de dados. Utilizando esses projetos como referência, planejamos reescrever o código de ETL para alinhá-lo com as boas práticas mencionadas. O novo código será disponibilizado na pasta "src". Embora o foco seja em um ambiente AWS, para efeitos demonstrativos, o desenvolvimento será realizado em um ambiente local.
 
+## python-for-data-engineers-grupo-4-master
+
+Segue a explicação dos diretórios e arquivos do projeto "**python-for-data-engineers-grupo-4-master**":
+
+
+`api_src` - Contém o código fonte da API REST construída com os dados disponibilizados pela pipeline (pasta `src`).
+├── `api_resources` - Contém os recursos auxiliares usados na codificação de rotas da API.
+├── `database.py` - Módulo responsável por mediar a comunicação entre a aplicação e o banco de dados
+├── `main.py` - Módulo principal da aplicação, responsável por iniciar o servidor da API
+└── `routes` - Contém os módulos que definem as rotas da API.
+`pyproject.toml` - Arquivo de configuração do Poetry
+`README.md` - Documentação do projeto
+`src` - Contém o código fonte da pipeline de ETL.
+├── `config.yaml` - Arquivo que armazena as configurações da pipeline (filtros customizados e tipo de extensão de arquivo de saída)
+├── `data` - Pasta que armazena os dados de origem da pipeline
+│   ├──  `acm` - Pasta que armazena os arquivos .bib extraídos da base de dados ACM
+│   ├──  `ieee` - Pasta que armazena os arquivos .bib extraídos da base de dados IEEE
+│   ├──  `science_direct` - Pasta que armazena os arquivos .bib extraídos da base de dados Science Direct
+│   ├──  `jcs_2020.csv` - Arquivo CSV que contém os dados da base de dados Journal Citation Reports
+│   └──  `scimagojr 2020.csv` - Arquivo CSV que contém os dados da base de dados Scimago Journal & Country Rank
+├── `main.ipynb` - Notebook Jupyter que contém o código fonte da pipeline
+├── `modules` - Pasta que contém os módulos auxiliares da pipeline
+│   ├── `bibtex_reader.py` - Módulo responsável por abstrair a leitura e manipulação dos arquivos .bib
+│   ├── `config.py` - Módulo responsável por abstrair a leitura do arquivo de configuração da pipeline
+│   ├── `folder_reader.py` - Módulo responsável por abstrair a leitura dos arquivos de uma pasta
+│   ├── `ieee_api_handler.py` - Módulo responsável por abstrair a comunicação com a API da IEEE
+│   ├── `operations.py` - Módulo responsável por abstrair as operações de transformação dos dados
+│   ├── `science_direct_api_handler.py` - Módulo responsável por abstrair a comunicação com a API da Science Direct
+│   ├── `specific_operations.py` - Módulo responsável por abstrair as operações específicas de transformação dos dados
+│   └── `sqlite3_loader.py` - Módulo responsável por abstrair a manipulação e carga dos dados no banco de dados SQLite3
+├── `output` - Pasta que armazena os arquivos de saída da pipeline
+└── `sandbox` - Pasta que armazena os arquivos de teste da pipeline
+`todo.md` - Arquivo que contém as tarefas a serem realizadas no projeto
 
 # TODO 
 
